@@ -1,5 +1,4 @@
 import "./gifshot";
-import "./libheif";
 declare function heic2any({ blob, toType, quality, gifInterval, multiple, }: {
     blob: Blob;
     multiple?: true;

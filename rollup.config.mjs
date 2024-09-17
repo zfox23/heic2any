@@ -1,0 +1,41 @@
+import typescript from "rollup-plugin-typescript2";
+import commonjs from "rollup-plugin-commonjs";
+import nodeResolve from "rollup-plugin-node-resolve";
+// import pkg from "./package.json";
+
+export default [
+	{
+		module: 'ES2022',
+		input: "src/heic2any.ts",
+		output: {
+			file: 'dist/heic2any.js',
+			format: "esm",
+			name: "heic2any",
+			globals: {
+				"./libheif": "libheif"
+			}
+		},
+		external: [],
+		plugins: [
+			typescript(),
+		]
+	},
+	{
+		module: 'ES2022',
+		input: "src/worker.ts",
+		output: {
+			file: 'dist/worker.js',
+			format: "umd",
+			name: "heic2any",
+			globals: {
+				"./libheif": "libheif"
+			}
+		},
+		external: [],
+		plugins: [
+			typescript(),
+			commonjs(),
+			nodeResolve(),
+		]
+	},
+];

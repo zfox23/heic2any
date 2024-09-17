@@ -1,3 +1,5 @@
+import heic2any from '../dist/heic2any.js';
+
 function loadHEIC(url) {
 	return new Promise((resolve, reject) => {
 		fetch(url)

@@ -1,9 +1,8 @@
 import "./gifshot";
-import "./libheif";
 
 const supportedMIMETypes = ["image/png", "image/jpeg", "image/gif"];
 
-type ResultType = "Blob" | "ImageData";
+(window as any).__heic2any__worker = new Worker(/* webpackChunkName: "heic-worker" */ new URL('./worker.js', import.meta.url));
 
 const utils = {
 	blobToDataURL: function (blob: Blob): Promise<string> {
@@ -30,7 +29,7 @@ const utils = {
 			}
 			var blob = new Blob([ab], { type: mimeString });
 			return blob;
-		} catch (e) {
+		} catch (e: any) {
 			return "ERR_DOM Error on converting data URI to blob " + e &&
 				e.toString
 				? e.toString()

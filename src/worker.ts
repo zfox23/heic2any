@@ -1,4 +1,4 @@
-import "./libheif";
+import * as libheif from 'libheif-js/wasm-bundle';
 
 function processSingleImage(image: libheif.DecodeResult): Promise<ImageData> {
 	return new Promise((resolve, reject) => {
@@ -22,7 +22,7 @@ function processSingleImage(image: libheif.DecodeResult): Promise<ImageData> {
 onmessage = (message: MessageEvent) => {
 	const id = message.data.id;
 	try {
-		const decoder = new libheif.HeifDecoder();
+		const decoder = new libheif.default.HeifDecoder();
 		let imagesArr = decoder.decode(message.data.buffer);
 		if (!imagesArr || !imagesArr.length) {
 			throw "ERR_LIBHEIF format not supported";

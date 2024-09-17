@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"declaration": true,
 		"declarationDir": "./dist",
-		"module": "commonjs",
+		"module": "ESNext",
 		"noImplicitAny": true,
 		"strict": true,
 		"outDir": "./dist",
