@@ -1,6 +1,6 @@
 {
-	"name": "heic2any",
-	"version": "0.0.4",
+	"name": "@time-loop/heic2any",
+	"version": "0.0.4-0",
 	"description": "Converting HEIC/HEIF to PNG/JPEG/GIF in the browser",
 	"main": "dist/heic2any.js",
 	"files": [
@@ -9,11 +9,13 @@
 	"type": "module",
 	"types": "dist/heic2any.d.ts",
 	"source": "src/heic2any.ts",
-	"exports": "./dist/heic2any.modern.js",
 	"scripts": {
-		"build": "ts-node ./build/build",
+		"build": "rollup -c rollup.config.mjs",
 		"server": "lite-server"
 	},
+	"publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/alexcorvi/heic2any.git"
