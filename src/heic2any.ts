@@ -193,10 +193,10 @@ const utils = {
 	},
 };
 
-function decodeBuffer(buffer: ArrayBuffer): Promise<ImageData[]> {
+function decodeBuffer(buffer: ArrayBuffer, skipIdx?: number): Promise<ImageData[]> {
 	return new Promise((resolve, reject) => {
 		const id = (Math.random() * new Date().getTime()).toString();
-		const message = { id, buffer };
+		const message = { id, buffer, skipIdx };
 		((window as any).__heic2any__worker as Worker).postMessage(message);
 		((window as any).__heic2any__worker as Worker).addEventListener(
 			"message",
@@ -218,12 +218,14 @@ function heic2any({
 	quality = 0.92,
 	gifInterval = 0.4,
 	multiple = undefined,
+	skipIdx = undefined
 }: {
 	blob: Blob;
 	multiple?: true;
 	toType?: string;
 	quality?: number;
 	gifInterval?: number;
+	skipIdx?: number;
 }): Promise<Blob | Blob[]> {
 	return new Promise(
 		(
@@ -261,7 +263,7 @@ function heic2any({
 						)
 					);
 				}
-				decodeBuffer(buffer)
+				decodeBuffer(buffer, skipIdx)
 					.then((imageDataArr) => {
 						gifWidth = imageDataArr[0].width;
 						gifHeight = imageDataArr[0].height;

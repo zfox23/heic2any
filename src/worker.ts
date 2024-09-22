@@ -27,7 +27,7 @@ onmessage = (message: MessageEvent) => {
 		if (!imagesArr || !imagesArr.length) {
 			throw "ERR_LIBHEIF format not supported";
 		}
-		imagesArr = imagesArr.filter((x) => {
+		imagesArr = imagesArr.filter((x, idx) => {
 			let valid = true;
 			try {
 				/*
@@ -36,6 +36,9 @@ onmessage = (message: MessageEvent) => {
 				*/
 				x.get_height();
 			} catch (e) {
+				valid = false;
+			}
+			if (idx === message.data.skipIdx) {
 				valid = false;
 			}
 			return valid;

@@ -5,7 +5,6 @@ import nodeResolve from "rollup-plugin-node-resolve";
 
 export default [
 	{
-		module: 'ES2022',
 		input: "src/heic2any.ts",
 		output: {
 			file: 'dist/heic2any.js',
@@ -21,7 +20,6 @@ export default [
 		]
 	},
 	{
-		module: 'ES2022',
 		input: "src/worker.ts",
 		output: {
 			file: 'dist/worker.js',
