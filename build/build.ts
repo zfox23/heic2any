@@ -39,7 +39,7 @@ async function startBuild() {
 	const gifshot = fs.readFileSync("./src/gifshot.js", { encoding: "utf8" });
 	console.log("🔨 📄 Reading main files");
 	let main = fs.readFileSync("./dist/heic2any.js", { encoding: "utf8" });
-	let worker = fs.readFileSync("./dist/worker.js", { encoding: "utf8" });
+	let worker = fs.readFileSync("./dist/heic-worker.js", { encoding: "utf8" });
 	console.log("🔨 📄 Creating worker code");
 	worker = `var workerString = \`\n${(watching
 		? libheif
@@ -72,8 +72,8 @@ async function startBuild() {
 		fs.writeFileSync("./dist/heic2any.min.js", libMin);
 	}
 	console.log("🔨 📄 Removing extra files");
-	fs.unlinkSync("./dist/worker.d.ts");
-	fs.unlinkSync("./dist/worker.js")
+	fs.unlinkSync("./dist/heic-worker.d.ts");
+	fs.unlinkSync("./dist/heic-worker.js")
 	console.log("🔨 🏁 Build finished successfully");
 }
 

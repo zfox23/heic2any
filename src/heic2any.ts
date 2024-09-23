@@ -2,7 +2,7 @@ import "./gifshot";
 
 const supportedMIMETypes = ["image/png", "image/jpeg", "image/gif"];
 
-(window as any).__heic2any__worker = new Worker(/* webpackChunkName: "heic-worker" */ new URL('./worker.js', import.meta.url));
+(window as any).__heic2any__worker = new Worker(/* webpackChunkName: "heic-worker" */ new URL('./heic-worker.js', import.meta.url));
 
 const utils = {
 	blobToDataURL: function (blob: Blob): Promise<string> {

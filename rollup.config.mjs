@@ -20,9 +20,9 @@ export default [
 		]
 	},
 	{
-		input: "src/worker.ts",
+		input: "src/heic-worker.ts",
 		output: {
-			file: 'dist/worker.js',
+			file: 'dist/heic-worker.js',
 			format: "umd",
 			name: "heic2any",
 			globals: {
